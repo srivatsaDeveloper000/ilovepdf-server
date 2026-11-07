@@ -1,0 +1,48 @@
+{
+    "info": {
+        "name": "ilovepdf_api_collections",
+        "description": "Testing the api end points",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "items": [
+        {
+            "name": "Create excel",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [
+                            "pm.test('Status code is 201', function () {",
+                            "    pm.response.to.have.status(201);",
+                            "});",
+                            "pm.test('Success is true', function () {",
+                            "    pm.expect(pm.response.json().success).to.eql(true);",
+                            "});",
+                            "pm.test('Success message is returned', function () {",
+                            "    pm.expect(pm.response.json().message).to.eql('Excel file created successfully');",
+                            "});",
+                            "pm.test('File path is returned', function () {",
+                            "    pm.expect(pm.response.json().filePath).to.be.a('string');",
+                            "});"
+                        ]
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/createExcel",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "createExcel"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}

@@ -13,7 +13,7 @@ app.use(cors())
 app.use(requestLogger);
 app.use(base_url , Routes)
 
-const PORT: Number = Number(process.env.PORT)
+const PORT: Number = Number(process.env.PORT);
 
 app.listen(PORT, (error) => {
     if (error) {

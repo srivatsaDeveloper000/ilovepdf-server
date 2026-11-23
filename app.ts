@@ -4,12 +4,17 @@ import { requestLogger } from "./middlewares/logger";
 import chalk from "chalk";
 import Routes from "./routes/routes.ts";
 import cors from "cors";
+import cookieParser from "cookie-parser"
 
 const app = express();
 dotenv.config();
-app.use(express.json())
+app.use(express.json());
+app.use(cookieParser());
 const base_url : string = process.env.BASE_URL || String(undefined);
-app.use(cors())
+app.use(cors({
+    origin :"*",
+    credentials : true
+}))
 app.use(requestLogger);
 app.use(base_url , Routes)
 
